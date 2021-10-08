@@ -6,6 +6,22 @@ public class Request {
     private byte[] file;
     private long position;
 
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public void setPosition(long position) {
+        this.position = position;
+    }
+
     public Request() {
     }
 

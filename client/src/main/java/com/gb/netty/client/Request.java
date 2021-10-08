@@ -9,6 +9,10 @@ public class Request {
     public Request() {
     }
 
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
     public Request(String command, String filename, byte[] file) {
         this.filename = filename;
         this.command = command;
@@ -22,6 +26,22 @@ public class Request {
     public Request(String command, String filename) {
         this.filename = filename;
         this.command = command;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public String getCommand() {
+        return command;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public long getPosition() {
+        return position;
     }
 
     public void setFilename(String filename) {

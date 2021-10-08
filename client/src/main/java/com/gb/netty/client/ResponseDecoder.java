@@ -14,7 +14,7 @@ public class ResponseDecoder extends MessageToMessageDecoder<byte[]> {
     protected void decode(ChannelHandlerContext ctx, byte[] msg, List<Object> out) throws Exception {
         Response res = om.readValue(msg, Response.class);
         String response = res.getResponse();
-        System.out.println("receive ansver from server: " + response);
+        System.out.println("receive answer from server: " + response);
         switch (response){
             case "receive file":{
                 RandomAccessFile accessFile = new RandomAccessFile(storagePath + res.getFilename(), "rw");

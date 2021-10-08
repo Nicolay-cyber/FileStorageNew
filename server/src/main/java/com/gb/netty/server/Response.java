@@ -10,6 +10,28 @@ public class Response {
         this.response = response;
     }
 
+    public Response() {
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public long getPosition() {
+        return position;
+    }
+
+    public byte[] getFile() {
+        return file;
+    }
 
     public void setFilename(String filename) {
         this.filename = filename;

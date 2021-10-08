@@ -3,6 +3,8 @@ package com.gb.netty.server;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
+
+import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 import java.util.List;
 
@@ -17,7 +19,7 @@ public class RequestDecoder extends MessageToMessageDecoder<byte[]> {
         Response response;
         switch (request){
             case "receive file":{
-                RandomAccessFile accessFile = new RandomAccessFile(storagePath + req.getFilename(), "rw");
+                RandomAccessFile accessFile = new RandomAccessFile(storagePath + req.getFilename(), "r");
                 accessFile.seek(req.getPosition());
                 accessFile.write(req.getFile());
                 System.out.println(req.getFilename() + " file received from the server");
@@ -27,6 +29,7 @@ public class RequestDecoder extends MessageToMessageDecoder<byte[]> {
                 System.out.println("client said hi!");
                 response = new Response("hi");
                 ctx.writeAndFlush(response);
+                break;
             }
             case "get file":{
                 String filename = req.getFilename();
@@ -49,6 +52,9 @@ public class RequestDecoder extends MessageToMessageDecoder<byte[]> {
                         }
                         buffer = new byte[1024 * 512];
                     }
+                }
+                catch (FileNotFoundException e){
+                    System.out.println("File isn't found");
                 }
                 break;
             }

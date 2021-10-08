@@ -9,7 +9,7 @@ import java.util.List;
 public class ResponseDecoder extends MessageToMessageDecoder<byte[]> {
 
     ObjectMapper om = new ObjectMapper();
-    String storagePath= "C:\\Users\\Николай\\IdeaProjects\\FileStorageNew\\client\\src\\main\\java\\com\\gb\\netty\\client\\clientStorage\\";
+    String storagePath= "C:\\Users\\Николай\\IdeaProjects\\FileStorageNew\\client\\src\\clientStorage\\";
     @Override
     protected void decode(ChannelHandlerContext ctx, byte[] msg, List<Object> out) throws Exception {
         Response res = om.readValue(msg, Response.class);
